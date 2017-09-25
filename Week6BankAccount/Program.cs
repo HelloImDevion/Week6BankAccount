@@ -10,7 +10,7 @@ namespace Week6BankAccount
     {
         static void Main(string[] args)
         {
-            Client accountHolder = new Client("Mark Kingston", 8881293, 2525.20, 10000.64);
+            Client accountHolder = new Client("Mark Kingston", 8881293, 2525.20d, 10000.64d);
             
             Console.WriteLine("Welcome to National WCCI");
             accountHolder.AccountInformation();
@@ -39,12 +39,12 @@ namespace Week6BankAccount
                
                 else if (userViewOption == 1)
                 {
-                    Checking holderChecking = new Checking("Mark Kingston", 8881293, 2525.20, 10000.64);
+                    Checking holderChecking = new Checking("Mark Kingston", 8881293, 2525.20d, 10000.64d);
                     holderChecking.AccountInformation();
                 }
                 else if (userViewOption == 2)
                 {
-                    Savings holderSaving = new Savings("Mark Kingston", 8881293, 2525.20, 10000.64, 5.00d);
+                    Savings holderSaving = new Savings("Mark Kingston", 8881293, 2525.20d, 10000.64d, 5.00d);
                     holderSaving.AccountInformation();
                 }
 

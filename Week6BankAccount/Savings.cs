@@ -8,25 +8,27 @@ namespace Week6BankAccount
 {
     class Savings : Client
     {
+        //fields
+        private double minimumBalance;
         
         //properties
         public double MinimumBalance
         {
-            get { return this.MinimumBalance; }
-            set { this.MinimumBalance = value; }
+            get { return this.minimumBalance; }
+            set { this.minimumBalance = value; }
         }
         //Constructor
         public Savings()
         {
 
         }
-        public Savings(string clientName, int clientAccountNumber, double checkingBalance, double savingsBalance, double MinimumBalance)
+        public Savings(string clientName, int clientAccountNumber, double checkingBalance, double savingsBalance, double minimumBalance)
         {
             this.clientName = clientName;
             this.clientAccountNumber = clientAccountNumber;
             this.checkingBalance = checkingBalance;
             this.savingsBalance = savingsBalance;
-            this.MinimumBalance = 5.00d;
+            this.minimumBalance = 5.00d;
         }
         //method
         public override void AccountInformation()
@@ -49,18 +51,32 @@ namespace Week6BankAccount
                 switch (userOption)
                 {
                     case 1:
-                        Console.WriteLine("Enter Amount You would like to Deposite: " + "Current Balance: " + checkingBalance);
+                        Console.WriteLine("Enter Amount You would like to Deposite: " + "Current Balance: " + savingsBalance);
                         double userDeposit = double.Parse(Console.ReadLine());
-                        double moneyOptionDeposit = checkingBalance + userDeposit;
+                        double moneyOptionDeposit = savingsBalance + userDeposit;
                         Console.WriteLine("New Savings Account Balance: " + moneyOptionDeposit);
                         break;
 
                     case 2:
-                        Console.WriteLine("Enter Amount You would like to Withdraw: " + "Current Balance: " + checkingBalance);
+                        Console.WriteLine("Enter Amount You would like to Withdraw: " + "Current Balance: " + savingsBalance);
                         double userWithdrawal = double.Parse(Console.ReadLine());
-                        double moneyOptionWithdrawal = checkingBalance - userWithdrawal;
+                    if (userWithdrawal >= minimumBalance)
+                    {
+                        Console.WriteLine("You can't over dawal your savings");
+                        Console.WriteLine("Enter a new amount to withdrawal: ");
+                        userWithdrawal = double.Parse(Console.ReadLine());
+                        double moneyOptionWithdrawal = savingsBalance - userWithdrawal;
                         Console.WriteLine("New Savings Account Balance: " + moneyOptionWithdrawal);
-                        break;
+                        
+
+                    }
+                    else
+                    {
+                        double moneyOptionWithdrawal = savingsBalance - userWithdrawal;
+                        Console.WriteLine("New Savings Account Balance: " + moneyOptionWithdrawal);
+                        
+                    }
+                    break;
 
                     case 3:
                         Console.WriteLine("Thank you for choosing Nation WCCI");
